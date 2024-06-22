@@ -1,0 +1,131 @@
+def display_menu():
+    print("\nTask Manager")
+    print("1. Add Task")
+    print("2. Complete Task")
+    print("3. Remove Task")
+    print("4. View Tasks")
+    print("5. Exit")
+
+def add_task(tasks):
+    task = input("Enter the task: ")
+    tasks.append({"task": task, "completed": False})
+    print(f'Task "{task}" added.')
+
+def complete_task(tasks):
+    task_number = int(input("Enter the task number to complete: ")) - 1
+    if 0 <= task_number < len(tasks):
+        tasks[task_number]["completed"] = True
+        print(f'Task "{tasks[task_number]["task"]}" marked as completed.')
+    else:
+        print("Invalid task number.")
+
+def remove_task(tasks):
+    task_number = int(input("Enter the task number to remove: ")) - 1
+    if 0 <= task_number < len(tasks):
+        removed_task = tasks.pop(task_number)
+        print(f'Task "{removed_task["task"]}" removed.')
+    else:
+        print("Invalid task number.")
+
+def view_tasks(tasks):
+    if not tasks:
+        print("No tasks to display.")
+    else:
+        for i, task in enumerate(tasks):
+            status = "Completed" if task["completed"] else "Not Completed"
+            print(f'{i + 1}. {task["task"]} - {status}')
+
+def main():
+    tasks = []
+    while True:
+        display_menu()
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            add_task(tasks)
+        elif choice == '2':
+            complete_task(tasks)
+        elif choice == '3':
+            remove_task(tasks)
+        elif choice == '4':
+            view_tasks(tasks)
+        elif choice == '5':
+            print("Exiting Task Manager.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 1
+Enter the task: buy groceries
+Task "buy groceries" added.
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 1
+Enter the task: walk the dog
+Task "walk the dog" added.
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 4
+1. buy groceries - Not Completed
+2. walk the dog - Not Completed
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 2
+Enter the task number to complete: 1
+Task "buy groceries" marked as completed.
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 3
+Enter the task number to remove: 2
+Task "walk the dog" removed.
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 4
+1. buy groceries - Completed
+
+Task Manager
+1. Add Task
+2. Complete Task
+3. Remove Task
+4. View Tasks
+5. Exit
+Enter your choice: 5
+Exiting Task Manager.
+
+=== Code Execution Successful ===
+
+out put:
